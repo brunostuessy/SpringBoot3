@@ -17,15 +17,18 @@
   <name>SpringBootApp1</name>
 
   <properties>
-    <java.version>21</java.version>
-    <maven.compiler.source>${java.version}</maven.compiler.source>
-    <maven.compiler.target>${java.version}</maven.compiler.target>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <java.version>17</java.version>
 
     <mainClass>io.brunostuessi.App</mainClass>
 
+    <aeron.version>1.46.7</aeron.version>
+
     <junit-jupiter.version>5.11.3</junit-jupiter.version>
     <junit-platform.version>1.11.3</junit-platform.version>
+
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <native.maven.plugin.version>0.10.3</native.maven.plugin.version>
     <imageName>SpringBootApp1</imageName>
@@ -42,12 +45,12 @@
     <dependency>
       <groupId>io.aeron</groupId>
       <artifactId>aeron-driver</artifactId>
-      <version>1.46.7</version>
+      <version>${aeron.version}</version>
     </dependency>
     <dependency>
       <groupId>io.aeron</groupId>
       <artifactId>aeron-client</artifactId>
-      <version>1.46.7</version>
+      <version>${aeron.version}</version>
     </dependency>
 
     <dependency>

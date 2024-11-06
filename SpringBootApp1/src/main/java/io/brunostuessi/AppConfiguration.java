@@ -8,11 +8,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 @Configuration(proxyBeanMethods = false)
 public class AppConfiguration {
@@ -34,21 +29,21 @@ public class AppConfiguration {
 
             Thread.sleep(5 * 1000);
 
-            LOG.info("Let's run 1k sleep 10 ms tasks in virtual threads");
-
-            try (ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor()) {
-                for (int i = 0; i < 1000; i++) {
-                    executor.submit(() -> {
-                        try {
-                            Thread.sleep(10);
-                        } catch (InterruptedException e) {
-                            throw new RuntimeException(e);
-                        }
-                    });
-                }
-                executor.shutdown();
-                LOG.info("" + executor.awaitTermination(5, TimeUnit.MINUTES));
-            }
+//            LOG.info("Let's run 1k sleep 10 ms tasks in virtual threads");
+//
+//            try (ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor()) {
+//                for (int i = 0; i < 1000; i++) {
+//                    executor.submit(() -> {
+//                        try {
+//                            Thread.sleep(10);
+//                        } catch (InterruptedException e) {
+//                            throw new RuntimeException(e);
+//                        }
+//                    });
+//                }
+//                executor.shutdown();
+//                LOG.info("" + executor.awaitTermination(5, TimeUnit.MINUTES));
+//            }
 
             LOG.info("Let's run AeronSimple");
 
