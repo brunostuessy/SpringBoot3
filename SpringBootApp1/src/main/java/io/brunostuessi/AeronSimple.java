@@ -32,7 +32,7 @@ public class AeronSimple {
                 // insufficient usable storage for new log of length=
                 // 201330688 usable=
                 //  58699776 in /dev/shm (shm)
-                .ipcTermBufferLength(58699776 / 2);
+                .ipcTermBufferLength(201330688 / 8);
         try (MediaDriver driver = MediaDriver.launch(context);
              Aeron aeron = Aeron.connect();
              Subscription sub = aeron.addSubscription(channel, 10);
