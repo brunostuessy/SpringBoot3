@@ -47,7 +47,11 @@ public class AppConfiguration {
 
             LOG.info("Let's run AeronSimple");
 
-            AeronSimple.main(null);
+            try {
+                AeronSimple.main(null);
+            } catch (Exception e) {
+                LOG.error("AeronSimple failed: " + e);
+            }
 
             LOG.info("Terminating");
         };
