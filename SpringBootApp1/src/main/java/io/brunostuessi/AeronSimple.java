@@ -32,6 +32,8 @@ public class AeronSimple {
                 // insufficient usable storage for new log of length=
                 // 201330688 usable=
                 //  58699776 in /dev/shm (shm)
+                .publicationTermBufferLength(
+                    33554432)
                 .ipcTermBufferLength(
                     33554432);
         try (MediaDriver driver = MediaDriver.launch(context);
