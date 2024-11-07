@@ -22,7 +22,18 @@ public class AeronSimple {
         final String message = "my message";
         final IdleStrategy idle = new SleepingIdleStrategy();
         final UnsafeBuffer unsafeBuffer = new UnsafeBuffer(ByteBuffer.allocate(256));
-        try (MediaDriver driver = MediaDriver.launch();
+
+        var context = new MediaDriver.Context()
+                //.threadingMode(ThreadingMode.SHARED)
+                //.dirDeleteOnStart(true)
+                //.aeronDirectoryName(aeronDir.toString)
+
+                // openshift issue
+                // insufficient usable storage for new log of length=
+                // 201330688 usable=
+                //  58699776 in /dev/shm (shm)
+                .ipcTermBufferLength(58699776 / 2);
+        try (MediaDriver driver = MediaDriver.launch(context);
              Aeron aeron = Aeron.connect();
              Subscription sub = aeron.addSubscription(channel, 10);
              Publication pub = aeron.addPublication(channel, 10))
