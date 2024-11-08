@@ -53,6 +53,10 @@ public class AppConfiguration {
                 LOG.error("AeronSimple failed: " + e);
             }
 
+            LOG.info("Let's sleep 5 secs");
+
+            Thread.sleep(60 * 60 * 1000);
+
             LOG.info("Terminating");
         };
     }
