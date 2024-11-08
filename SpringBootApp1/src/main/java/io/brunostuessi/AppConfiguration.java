@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.Arrays;
+import java.util.Properties;
 
 @Configuration(proxyBeanMethods = false)
 public class AppConfiguration {
@@ -25,9 +26,13 @@ public class AppConfiguration {
                 LOG.info(beanName);
             }
 
-            LOG.info("Let's sleep 5 secs");
+            LOG.info("Let's inspect the beans provided by Spring Boot:");
 
-            Thread.sleep(5 * 1000);
+            Properties properties = System.getProperties();
+            Arrays.sort(beanNames);
+            for (String propertyName : properties.stringPropertyNames()) {
+                LOG.info(propertyName + "=" + properties.get(propertyName));
+            }
 
 //            LOG.info("Let's run 1k sleep 10 ms tasks in virtual threads");
 //
@@ -50,7 +55,7 @@ public class AppConfiguration {
             try {
                 AeronSimple.main(null);
             } catch (Exception e) {
-                LOG.error("AeronSimple failed: " + e);
+                LOG.error("AeronSimple failed", e);
             }
 
             LOG.info("Let's sleep 5 secs");
