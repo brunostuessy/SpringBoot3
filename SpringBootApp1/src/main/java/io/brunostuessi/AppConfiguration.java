@@ -26,7 +26,7 @@ public class AppConfiguration {
                 LOG.info(beanName);
             }
 
-            LOG.info("Let's inspect the beans provided by Spring Boot:");
+            LOG.info("Let's inspect the system properties:");
 
             Properties properties = System.getProperties();
             Arrays.sort(beanNames);
@@ -58,7 +58,7 @@ public class AppConfiguration {
                 LOG.error("AeronSimple failed", e);
             }
 
-            LOG.info("Let's sleep 5 secs");
+            LOG.info("Let's sleep 1 hour");
 
             Thread.sleep(60 * 60 * 1000);
 
